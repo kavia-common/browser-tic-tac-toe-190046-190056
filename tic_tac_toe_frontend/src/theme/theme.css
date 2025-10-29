@@ -1,0 +1,167 @@
+:root {
+  color-scheme: light dark;
+}
+
+:root[data-theme='light'] {
+  /* Ocean Professional - Light */
+  --color-primary: #2563EB; /* Blue */
+  --color-secondary: #F59E0B; /* Amber */
+  --color-error: #EF4444;
+  --color-bg: #f9fafb;       /* background */
+  --color-surface: #ffffff;  /* cards, panels */
+  --color-text: #111827;     /* gray-900 */
+  --color-text-muted: #4b5563; /* gray-600 */
+  --color-border: rgba(17, 24, 39, 0.08);
+  --shadow-soft: 0 1px 2px rgba(0,0,0,0.05), 0 4px 10px rgba(37,99,235,0.05);
+
+  --btn-bg: var(--color-primary);
+  --btn-text: #ffffff;
+  --link: #2563EB;
+  --cell-bg: var(--color-surface);
+  --cell-border: rgba(17,24,39,0.1);
+}
+
+:root[data-theme='dark'] {
+  /* Ocean Professional - Dark */
+  --color-primary: #3B82F6; /* slightly lighter blue for contrast */
+  --color-secondary: #F59E0B;
+  --color-error: #F87171;
+  --color-bg: #0b1220;        /* deep ocean-night */
+  --color-surface: #111827;   /* gray-900 */
+  --color-text: #F9FAFB;      /* gray-50 */
+  --color-text-muted: #9CA3AF;/* gray-400 */
+  --color-border: rgba(249, 250, 251, 0.1);
+  --shadow-soft: 0 1px 2px rgba(0,0,0,0.4), 0 6px 16px rgba(0,0,0,0.35);
+
+  --btn-bg: var(--color-primary);
+  --btn-text: #e5e7eb;
+  --link: #93c5fd;
+  --cell-bg: #0f172a;        /* slate-900-ish */
+  --cell-border: rgba(255,255,255,0.08);
+}
+
+/* Global application scaffolding */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(1200px 800px at 50% -10%, rgba(37, 99, 235, 0.08), transparent 60%),
+              var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 200ms ease, color 200ms ease, background 300ms ease;
+}
+
+a {
+  color: var(--link);
+  transition: color 200ms ease;
+}
+
+button {
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 120ms ease;
+}
+
+/* Utility classes for subtle modern look */
+.surface {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+  border-radius: 12px;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(37,99,235,0.18);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Board and controls (generic for tic tac toe layout) */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background: var(--cell-bg);
+  border: 1px solid var(--cell-border);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  user-select: none;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 100ms ease;
+}
+
+.cell:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-primary);
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 420px;
+  margin: 30px auto 10px;
+  padding: 10px 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+}
+
+.status-text {
+  font-weight: 600;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 12px 16px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-primary);
+}
